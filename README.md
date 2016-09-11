@@ -7,7 +7,7 @@ This project contains two applications for iOS and macOS. That should demonstrat
 
 #### 1. `NSURLSession` doesn't release delegate after `NSURLSessionStreamTask` created on macOS
 
-After `streamTaskWithHostName:port:` call `invalidateAndCancel` stop working. `URLSession:didBecomeInvalidWithError:` will not be called. And delegate will not be released.
+After `streamTaskWithHostName:port:` call `invalidateAndCancel` does nothing. `URLSession:didBecomeInvalidWithError:` will not be called. And delegate will not be released.
 
 Start iOS app and run steps from 1 to 6. You will see the log:
 ```
@@ -34,9 +34,9 @@ StreamTask-mac[9331:318999] URL Session delegate wait for release...
 StreamTask-mac[9331:318999] Streams are captured
 ```
 
-#### 2. `NSURLSession` doesn't release delegate if `NSURLSessionStreamTask` created but streams is not captured
+#### 2. `NSURLSession` doesn't release delegate if `NSURLSessionStreamTask` created but streams are not captured
 
-After `streamTaskWithHostName:port:` call `invalidateAndCancel` works only if `captureStreams` method called.
+After `streamTaskWithHostName:port:` call `invalidateAndCancel` works only if `captureStreams` method has been called.
 
 Start iOS app and run steps 1 - 6 **except step 3 (Capture Streams)**
 ```
